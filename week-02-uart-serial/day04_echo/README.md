@@ -1,4 +1,4 @@
-##Day 4 — USART2 Bare-Metal UART (PA2/PA3)
+## Day 4 — USART2 Bare-Metal UART (PA2/PA3)
 
 Board: WeAct STM32F405RGT6 Blackpill
 Debugger: ST-Link V2.1 (10-pin, has VCP support)
