@@ -59,7 +59,7 @@ This code uses `0x8B` (115200).
 Clock enables must come before any GPIOA/USART2 register write — writes to
 an unclocked peripheral are silently ignored, no fault raised.
 
-## Known quirks / things that bit us
+## Challenges
 
 - Enabling TE causes USART2 to send one idle frame immediately (documented
   behavior, RM0090 §30.3) — this is also the moment PA2 stops floating and
