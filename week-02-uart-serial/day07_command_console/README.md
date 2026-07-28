@@ -33,7 +33,7 @@ LED, then sends a confirmation string back.
 - Type `exit` to break the loop and close the serial connection
   cleanly (`ser.close()`) without closing the terminal itself.
 
-## Known gotcha (documented, not yet hardened)
+## Possible Pitfall
 If the PC sends `\r\n` instead of `\n` (some OS/terminal serial
 configs do this), the MCU's buffer ends up with a trailing `\r`
 before the null terminator, so `strcmp()` against `"LED ON"` fails
