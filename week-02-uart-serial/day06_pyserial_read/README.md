@@ -27,7 +27,7 @@ terminal.
    you can do math/comparisons on — mirrors, in reverse, what the
    MCU's `printf` did converting an int into ASCII text to transmit.
 
-## Gotchas handled
+## Possible Pitfalls
 - `timeout=2` is set generously **longer** than the MCU's ~1s send
   interval, not equal to it — a timeout equal to the send interval
   risks `readline()` timing out mid-line under normal scheduling
