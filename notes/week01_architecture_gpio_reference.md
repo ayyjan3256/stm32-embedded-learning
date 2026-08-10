@@ -75,7 +75,7 @@ Proven directly by compiling on godbolt.org at `-O2`: without `volatile`, multip
 
 ---
 
-## CMSIS Is Not Magic
+## CMSIS Resolution
 
 ```c
 GPIOC->MODER
