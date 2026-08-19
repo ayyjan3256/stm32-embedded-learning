@@ -1,7 +1,7 @@
 # Day 4: UART RX Interrupts & Command Line Interface (CLI)
 
 ## 🎯 Objective
-Build a two-way, non-blocking Command Line Interface (CLI) over USART2. This project utilizes hardware RX interrupts to buffer incoming serial data in the background, safely passing it to the main loop to parse hardcoded commands and dynamic arguments.
+Build a two-way, non-blocking Command Line Interface (CLI) over USART2. This project utilizes hardware RX interrupts to buffer incoming serial data in the background, safely passing it to the main loop to parse hardcoded commands.
 
 ## 🛠️ Hardware Setup
 * **MCU:** STM32F405 (Blackpill)
@@ -21,11 +21,7 @@ When the ISR detects a Carriage Return (`\r`), it caps the array with a null ter
 
 ### 4. Main Loop as the "Command Executor"
 The `while(1)` loop monitors the `command_ready` flag. When raised, it acts on the string without blocking the system:
-* **`strcmp` (Static Commands):** Checks for exact string matches like `"LED ON"` or `"LED OFF"`.
-* **`sscanf` (Dynamic Arguments):** Parses strings like `"DELAY 250"`, extracting the integer (`250`) and safely ignoring bad user input.
-
-### 5. Non-Blocking Tasks (`HAL_GetTick`)
-Instead of using `HAL_Delay()`, which pauses the entire CPU and breaks the CLI responsiveness, a background time-tracking variable (`last_blink_time`) uses `HAL_GetTick()` to blink the LED asynchronously at the speed determined by the `DELAY` command.
+* **`strcmp`:** Checks for exact string matches like `"LED ON"`, `"LED OFF"`, or `"STATUS"` to control and read hardware states instantly.
 
 ## 🚀 Takeaways
 * **Separation of Concerns:** Never put slow functions like `printf` or `strcmp` inside an ISR. The ISR gathers; the main loop executes.
