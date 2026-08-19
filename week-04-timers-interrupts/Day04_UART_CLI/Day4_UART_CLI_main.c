@@ -10,9 +10,6 @@ char rx_buffer[BUFFER_SIZE];
 uint8_t rx_index = 0;
 volatile uint8_t command_ready = 0;
 
-volatile uint32_t blink_delay = 500; // Default blink delay (500ms)
-uint32_t last_blink_time = 0;
-
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 void USART_RX_Interrupt_Init(void);
@@ -41,11 +38,9 @@ int main(void)
 
     while (1)
     {
-        // --- 1. CLI COMMAND PARSING ---
+        // --- CLI COMMAND PARSING ---
         if (command_ready == 1) 
         {
-            uint32_t new_delay = 0;
-
             // Check for exact matches
             if (strcmp(rx_buffer, "LED ON") == 0) {
                 GPIOB->BSRR = (1 << 2);
@@ -62,23 +57,12 @@ int main(void)
                     printf("LED is OFF\r\n");
                 }
             }
-            // Check for dynamic variables using sscanf
-            else if (sscanf(rx_buffer, "DELAY %lu", &new_delay) == 1) {
-                blink_delay = new_delay;
-                printf("Blink delay updated to: %lu ms\r\n", blink_delay);
-            }
             // Catch invalid commands (ignoring empty enter keystrokes)
             else if (strlen(rx_buffer) > 0) {
                 printf("UNKNOWN COMMAND: %s\r\n", rx_buffer);
             }
 
             command_ready = 0; // Wait for next command
-        }
-
-        // --- 2. NON-BLOCKING LED TASK ---
-        if ((HAL_GetTick() - last_blink_time) >= blink_delay) {
-            last_blink_time = HAL_GetTick(); 
-            GPIOB->ODR ^= (1 << 2); // Toggle LED at the dynamic speed
         }
     }
 }
@@ -130,5 +114,5 @@ void USART2_IRQHandler(void)
 
 void SystemClock_Config(void)
 {
-    // Implementation omitted for brevity (Use your standard 168MHz HSE config here)
+    // Implementation omitted for brevity
 }
