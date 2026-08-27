@@ -4,7 +4,7 @@
 Transitions from polling to a fully interrupt-driven, non-blocking architecture capable of handling multiple concurrent hardware events. Demonstrates the STM32's ability to juggle multiple sensors using Nested Vectored Interrupt Controller (NVIC) priorities, ensuring data collection continues seamlessly even when the main CPU loop is under heavy load.
 
 ## Files
-- `day06_multitasking.c` — MCU-side configuration for dual timers (TIM2, TIM3), dual external interrupts (EXTI0, EXTI4), ADC1 background reads, NVIC priority assignments, and safe ISR-to-main data sharing using `volatile` variables.
+- `day06_multiiinterrupt.c` — MCU-side configuration for dual timers (TIM2, TIM3), dual external interrupts (EXTI0, EXTI4), ADC1 background reads, NVIC priority assignments, and safe ISR-to-main data sharing using `volatile` variables.
 
 ## Hardware
 - STM32F405RGT6 (Blackpill)
