@@ -32,7 +32,7 @@ Transitions from polling to a fully interrupt-driven, non-blocking architecture 
 
 ## Setup / Usage
 1. Generate an STM32CubeIDE project for the STM32F405RGTx (168 MHz SYSCLK).
-2. Integrate the functions from `day06_multitasking.c` into the appropriate sections of `main.c`.
+2. Integrate the functions from `day06_multiinterrupt.c` into the appropriate sections of `main.c`.
 3. Add a 5,000,000-cycle empty `for` loop to the `while(1)` block to simulate a heavy CPU workload (like an AI model).
 4. Build, flash, and monitor the UART terminal. Observe that despite the massive CPU delay in `main()`, hardware data collection (knocks, button toggles, ADC light reads) never misses a single event.
 EOF
