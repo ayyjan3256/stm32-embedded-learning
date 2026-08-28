@@ -35,7 +35,7 @@ Build a strong practical foundation in STM32 embedded development from bare-meta
 
 ## Progress
 
-- [x] Week 1 — in progress
+- [x] Week 1
 - [x] Week 2
 - [x] Week 3
 - [x] Week 4
@@ -52,4 +52,5 @@ Weekly study notes, reference sheets, and hand-drawn diagrams are in the `/notes
 
 *Started: July 07, 2026*
 *Board: WeAct STM32F405RGT6 Blackpill*
+
 *Author: Ayyub Murjan*
