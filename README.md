@@ -36,9 +36,9 @@ Build a strong practical foundation in STM32 embedded development from bare-meta
 ## Progress
 
 - [x] Week 1 — in progress
-- [ ] Week 2
-- [ ] Week 3
-- [ ] Week 4
+- [x] Week 2
+- [x] Week 3
+- [x] Week 4
 - [ ] Week 5
 - [ ] Week 6
 - [ ] Week 7
