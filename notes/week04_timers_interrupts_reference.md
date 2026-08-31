@@ -81,7 +81,7 @@ while True:
             pass
 ```
 
-### Bugs actually hit this week (worth remembering)
+### Encountered Bugs
 * **The "Ghost Handler" Trap:** Setting `UIE` in the peripheral and enabling the IRQ in the NVIC without defining the corresponding `IRQHandler` function. Hardware raises the flag, the CPU branches to a missing function, and crashes into the infinite `Default_Handler` loop.
 * **ISR Spelling / Typo Failures:** Naming a handler `EXTIO_IRQHanlder` (using 'O' instead of '0', and spelling 'Hanlder' instead of 'Handler'). The compiler throws no errors because it treats it as a custom function, resulting in the same `Default_Handler` crash as the Ghost Handler trap.
 * **Missing Flag Clears:** Failing to explicitly clear `EXTI->PR` before exiting the ISR. The CPU exits, immediately sees the flag is still high, and re-enters the ISR infinitely, freezing `main()`.
