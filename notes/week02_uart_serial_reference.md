@@ -142,6 +142,3 @@ if (c == '\n') {
   prints its return value (byte count) automatically, even with no
   `print()` call; doesn't happen when run as a `.py` script.
 
-## Still open
-- None — Day 3's BRR hand-calc was eventually walked through and
-  verified during Day 7's rebuild-from-memory.
