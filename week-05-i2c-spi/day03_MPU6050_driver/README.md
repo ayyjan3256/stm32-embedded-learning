@@ -21,6 +21,6 @@ Utilizes the MPU6050's auto-incrementing address pointer to read consecutive reg
     *   Accel default range is ±2g. Scale factor: `1g = 16384`.
     *   Gyro default range is ±250°/s. Scale factor: `1°/s = 131.0`.
 
-## Known Quirks / Gotchas
+## Pitfalls/Quikrs
 *   **WHO_AM_I (0x75)** returning 0x68 confirms the device identity, but a flaky breadboard connection can still intermittently fail during burst reads. Logic analyzer verification of the final NACK is critical.
 *   **Floating Point Printf:** Standard STM32 GCC setups disable `%f` formatting to save memory. A custom formatting function using modulo math (`print_fixed2`) is required to print decimal values without bloating the binary.
