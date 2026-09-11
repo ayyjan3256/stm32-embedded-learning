@@ -36,7 +36,7 @@ Simplest possible bus test — no register read, just confirm a device ACKs its 
 
 *Reading SR1 then SR2 is the documented way to clear the ADDR flag — this is not optional, ADDR blocks clock stretching until cleared.*
 
-## Known Quirks / Gotchas
+## Pitfalls/Quirks
 *   **Clock config mismatch** is the #1 suspect for "nothing happens on the bus." If `SystemClock_Config()` doesn't match the board's actual HSE crystal, execution parks in `Error_Handler()` and initialization never runs. 
 *   Confirmed on this board: HSE = 8MHz, so PLLM=4, PLLN=168, PLLP=2 → 168MHz SYSCLK → 42MHz APB1 is correct as-is.
 *   **Logic Analyzer Capture:** Capturing a one-shot transaction is timing-painful. Wrapping the transaction in a `while` loop or `for` loop with a delay makes it easy to capture on PulseView using a falling-edge trigger on SDA.
