@@ -63,7 +63,7 @@ Proves: your driver's bit order, bracket timing (SS/CS), and sampling-edge logic
 
 Does not prove: correctness against a real external device, since CPOL/CPHA is a single setting on one chip — there's no independently-configured second party in a loopback setup to disagree with.
 
-## Known Quirks / Gotchas
+## Encountered Pitfalls
 
 - **PCF8574-style bug pattern applies here too, conceptually:** any function name mismatch (e.g. calling `LCD_PulseEnable` when the function is actually named `LCDPulseEnable`) is a link error, not a logic error — worth double-checking names match exactly between declaration, definition, and call site.
 - SS/CS active-low logic is easy to get backwards in naming (`SS_LOW()` should *drive the pin low*, not confusingly do the opposite) — verify the function body matches its name, not just that the call sequence happens to produce the right net electrical result.
