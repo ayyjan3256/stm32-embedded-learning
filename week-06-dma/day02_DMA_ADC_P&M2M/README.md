@@ -93,7 +93,7 @@ not a configuration choice.
   streams 4-7 → HISR).
 - Once complete, dumps all 100 buffered values over UART.
 
-## Known Bugs Found & Fixed This Session
+## Bugs Found & Fixed
 
 - **Dangling stack pointer:** `src`/`dest` (and later `buffer`) initially
   declared as local variables — their addresses became invalid the moment
@@ -125,13 +125,3 @@ not a configuration choice.
 - "Target not available" during debug is a connection/session fault
   (stale session, USB power blip, or a genuinely hung poll loop) — fully
   terminate and restart the debug session rather than resuming.
-
-## Status
-
-Memory-to-memory transfer and continuous ADC1+DMA2 pipeline both verified
-working. No outstanding bugs as of this commit.
-
-## Next
-
-Day 3 — circular mode (`CIRC`), half-transfer/transfer-complete flag gating
-(`HTIF`/`TCIF`) for race-free access to a continuously-refilling buffer.
