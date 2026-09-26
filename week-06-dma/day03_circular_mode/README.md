@@ -128,19 +128,3 @@ what makes the read structurally race-free rather than just usually-safe.
   `half_ready`/`full_ready` flags), risking silent corruption disguised as
   bizarre flag behavior. Fixed by matching both to 96 (see sizing section
   above).
-- **`i*15` UART print indexing (Day 2 circular test):** produced an
-  out-of-bounds read past `buffer[100]` on later loop iterations. Fixed by
-  keeping print indices within bounds.
-
-## Status
-
-Circular mode confirmed running indefinitely with no restart. Multi-channel
-scan confirmed interleaving correctly via `% 3` grouping. `HTIF`/`TCIF`
-interrupt scheme confirmed firing and clearing correctly with no re-fire
-loop.
-
-## Next
-
-Day 4 — double buffering (`DBM`/`CT`): same race-free goal, different
-mechanism — two full, independent buffers instead of one buffer read in
-two guarded halves.
