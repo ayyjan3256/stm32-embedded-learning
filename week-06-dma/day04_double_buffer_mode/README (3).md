@@ -1,6 +1,5 @@
 # Week 6, Day 4 — Double Buffering (Ping-Pong Mode)
 
-**Board:** WeAct STM32F405RGT6 Blackpill
 **Builds on:** Day 3's circular, multi-channel ADC1+DMA2 pipeline
 
 ## Overview
@@ -94,25 +93,3 @@ mechanism to slow the incoming stream to match a slow consumer.
 **Remove the `HAL_Delay(2000)` for normal operation** — it is left in this
 version specifically to demonstrate the stress-test symptom, not as
 production behavior.
-
-## Known Bugs Found & Fixed This Session
-
-- Earlier draft mismatched buffer size (99) against `NDTR` (100) — an
-  off-by-one buffer overflow risking corruption of adjacent variables
-  (specifically the `_ready` flags, which sat right next to the buffer in
-  memory — a bug that would have looked like unexplained flag behavior
-  rather than an obvious memory fault). Fixed by matching `NDTR` and buffer
-  length exactly (99/99 here, since DBM has no half-split constraint).
-
-## Status
-
-Double-buffer swap confirmed via `CT`-driven ISR logic. Mean/std computed
-correctly per completed buffer. Stress test intentionally included to
-demonstrate the falling-behind failure mode discussed above — expect
-visibly stale or infrequent output while `HAL_Delay(2000)` remains in
-`process_buffer()`.
-
-## Next
-
-Day 5 — UART TX via DMA, freeing the CPU from byte-by-byte transmission the
-same way Days 2-4 freed it from ADC polling.
