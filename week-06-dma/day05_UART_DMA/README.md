@@ -1,8 +1,5 @@
 # Week 6, Day 5 — UART TX via DMA, Combined ADC+UART Pipeline
 
-**Board:** WeAct STM32F405RGT6 Blackpill
-**Builds on:** Day 3/4's ADC1+DMA2 multi-channel sampling
-
 ## Overview
 
 Days 2-4 freed the CPU from per-sample ADC polling. This day applies the
