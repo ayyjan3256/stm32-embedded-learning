@@ -299,8 +299,6 @@ static void adc_stop(void){
 	ADC1->CR2 &= ~ADC_CR2_ADON;
 	DMA2_Stream0->CR &= ~DMA_SxCR_EN;
 	while (DMA2_Stream0->CR & DMA_SxCR_EN);      /* hardware clears EN when in-flight transfer ends */
-	buffer_a_ready = 0;
-	buffer_b_ready = 0;
 }
 
 /* ------------------------------------------------------------------------- */
