@@ -285,8 +285,3 @@ per-channel mean and standard deviation.
 - Gate the *formatting* step on `tx_done`, not only the DMA re-enable.
 - `volatile` flags must be declared before the ISR that uses them.
 
-## Next
-
-Week 7 builds on this pipeline. Week 8's capstone feeds windows of
-DMA-collected samples to the TinyML model in real time, using the
-double-buffer structure built here.
